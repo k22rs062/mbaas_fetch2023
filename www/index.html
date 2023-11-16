@@ -37,6 +37,17 @@
               var update=results.get("updateDate"); $("#message").html(data + ":" + update);
                }) 
             }
+        function fetchAll() { 
+            var TestClass= ncmb.DataStore("FetchTest"); 
+            TestClass.fetchAll() .then(function(results){ 
+                var msg=""; for(var i=0; i<results.length; i++){ 
+                    var data=results[i].get("text"); 
+                    var update=results[i].get("updateDate"); 
+                    msg += data + ":" + update; 
+                    } 
+                    $("#message").html(msg); 
+                    }) 
+                }
     </script>
 </head>
 
@@ -48,7 +59,8 @@
     </div>
     <div id="button">
         <button id="btnA" class="btn" onclick="register()">Register</button>
-        <button id="btnB" class="btn" onclick="register()">Fetch</button>
+        <button id="btnB" class="btn" onclick="fetch()">Fetch</button>
+        <button id="btnC" class="btn" onclick="fetchAll()">FetchAll</button>
     </div>
     
 
